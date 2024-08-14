@@ -1,4 +1,4 @@
-name: no-confusion
+name: coolkiid/no-confusion
 description: Check text files against Unicode impostor symbols that look like regular ASCII.
 author: Athenian
 inputs:
