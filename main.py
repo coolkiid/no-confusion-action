@@ -72,13 +72,13 @@ def scan_file(path: Path, regexp: re.Pattern, excluded_patterns: List[str], reld
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--include", default="[]")
-    parser.add_argument("--exclude", default="[]")
+    parser.add_argument("--include", default="")
+    parser.add_argument("--exclude", default="")
     parser.add_argument("--exclude-patterns", default="{}")
     args = parser.parse_args()
     return (
-        json.loads(args.include),
-        json.loads(args.exclude),
+        args.include.strip().split(" ") if args.include else [],
+        args.exclude.strip().split(" ") if args.exclude else [],
         json.loads(args.exclude_patterns),
     )
 
