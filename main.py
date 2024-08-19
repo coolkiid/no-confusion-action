@@ -36,6 +36,9 @@ def scan_file(path: Path, regexp: re.Pattern, excluded_patterns: List[str], reld
     try:
         with path.open(encoding="utf-8") as fin:
             text = fin.read()
+    except UnicodeDecodeError:
+        print(f'{path} is not a text file, skip this.')
+        return True
     except Exception as e:
         print(f"Warning: failed to read {path}: {type(e).__name__}: {e}", file=sys.stderr)
     if matches := list(regexp.finditer(text)):
